@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://admissionsCampaignEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.selcommittee.web.screens.admissionscampaign">
+    <data>
+        <instance id="admissionsCampaignDc"
+                  class="com.company.selcommittee.entity.AdmissionsCampaign">
+            <view extends="_local">
+                <property name="directionsOfStudy" view="_local"/>
+                <property name="students" view="_local"/>
+            </view>
+            <loader/>
+            <collection id="directionsOfStudyDc" property="directionsOfStudy"/>
+            <collection id="studentsDc" property="students"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="admissionsCampaignDc">
+            <column width="350px">
+                <textField id="yearField" property="year"/>
+            </column>
+        </form>
+        <groupBox id="directionsOfStudyBox"
+                  caption="msg://com.company.selcommittee.entity/AdmissionsCampaign.directionsOfStudy">
+            <table id="directionsOfStudyTable" dataContainer="directionsOfStudyDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="cipher"/>
+                    <column id="name"/>
+                    <column id="numOfBudgetPlaces"/>
+                    <column id="passingPoints"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="directionsOfStudyTable.add"/>
+                    <button action="directionsOfStudyTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="studentsBox" caption="msg://com.company.selcommittee.entity/AdmissionsCampaign.students">
+            <table id="studentsTable" dataContainer="studentsDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="surname"/>
+                    <column id="patronymic"/>
+                    <column id="sex"/>
+                    <column id="dateOfBirth"/>
+                    <column id="cipher"/>
+                    <column id="citizenship"/>
+                    <column id="isHostelNeed"/>
+                    <column id="sumOfPoints"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="studentsTable.add"/>
+                    <button action="studentsTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

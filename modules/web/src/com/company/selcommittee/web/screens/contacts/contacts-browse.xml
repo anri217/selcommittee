@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://contactsBrowse.caption"
+        focusComponent="contactsesTable"
+        messagesPack="com.company.selcommittee.web.screens.contacts">
+    <data readOnly="true">
+        <collection id="contactsesDc"
+                    class="com.company.selcommittee.entity.Contacts">
+            <view extends="_local">
+                <property name="permanentRegistrationAddress" view="_minimal">
+                    <property name="country"/>
+                    <property name="region"/>
+                    <property name="locality"/>
+                    <property name="street"/>
+                    <property name="house"/>
+                    <property name="building"/>
+                    <property name="flat"/>
+                    <property name="zipCode"/>
+                </property>
+                <property name="livingAddress" view="_minimal">
+                    <property name="country"/>
+                    <property name="region"/>
+                    <property name="locality"/>
+                    <property name="street"/>
+                    <property name="house"/>
+                    <property name="building"/>
+                    <property name="flat"/>
+                    <property name="zipCode"/>
+                </property>
+            </view>
+            <loader id="contactsesDl">
+                <query>
+                    <![CDATA[select e from selcommittee_Contacts e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="contactsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="contactsesTable"
+                dataLoader="contactsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="contactsesTable"
+                    width="100%"
+                    dataContainer="contactsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="mainCellPhone"/>
+                <column id="additionalCellPhone"/>
+                <column id="permanentRegistrationString"/>
+                <column id="livingAddressRegistrationString"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="contactsesTable.create"/>
+                <button id="editBtn" action="contactsesTable.edit"/>
+                <button id="removeBtn" action="contactsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

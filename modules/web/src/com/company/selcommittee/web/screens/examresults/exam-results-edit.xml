@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://examResultsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.selcommittee.web.screens.examresults">
+    <data>
+        <instance id="examResultsDc"
+                  class="com.company.selcommittee.entity.ExamResults">
+            <view extends="_local">
+                <property name="discipline" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="examResultsDc">
+            <column width="350px">
+                <pickerField id="disciplineField" property="discipline">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="pointsCountField" property="pointsCount"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

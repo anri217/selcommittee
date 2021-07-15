@@ -1,0 +1,5 @@
+create table SELCOMMITTEE_ADMISSIONS_CAMPAIGN_STUDENT_LINK (
+    ADMISSIONS_CAMPAIGN_ID varchar(36) not null,
+    STUDENT_ID varchar(36) not null,
+    primary key (ADMISSIONS_CAMPAIGN_ID, STUDENT_ID)
+);

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://studentEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.selcommittee.web.screens.student">
+    <data>
+        <instance id="studentDc"
+                  class="com.company.selcommittee.entity.Student">
+            <view extends="_local">
+                <property name="contacts" view="_minimal">
+                    <property name="mainCellPhone"/>
+                    <property name="additionalCellPhone"/>
+                    <property name="permanentRegistrationAddress" view="_minimal">
+                        <property name="country"/>
+                        <property name="region"/>
+                        <property name="locality"/>
+                        <property name="street"/>
+                        <property name="house"/>
+                        <property name="building"/>
+                        <property name="flat"/>
+                        <property name="zipCode"/>
+                    </property>
+                    <property name="livingAddress" view="_minimal">
+                        <property name="country"/>
+                        <property name="region"/>
+                        <property name="locality"/>
+                        <property name="street"/>
+                        <property name="house"/>
+                        <property name="building"/>
+                        <property name="flat"/>
+                        <property name="zipCode"/>
+                    </property>
+                </property>
+                <property name="directionsOfStudyWithPriority" view="_minimal">
+                    <property name="directionOfStudy" view="_minimal">
+                        <property name="cipher"/>
+                        <property name="numOfBudgetPlaces"/>
+                        <property name="passingPoints"/>
+                    </property>
+                    <property name="priority"/>
+                </property>
+                <property name="sumOfPoints"/>
+                <property name="documentCard" view="_minimal">
+                    <property name="passport"/>
+                    <property name="personalInsurancePolicyNum"/>
+                    <property name="individualTaxpayerNum"/>
+                </property>
+                <property name="examResults" view="_minimal">
+                    <property name="discipline" view="_minimal"/>
+                    <property name="pointsCount"/>
+                </property>
+            </view>
+            <loader/>
+            <collection id="examResultsDc" property="examResults"/>
+            <collection id="directionsOfStudyWithPriorityDc" property="directionsOfStudyWithPriority"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="studentDc">
+                <column width="350px">
+                    <textField id="nameField" property="name"/>
+                    <textField id="surnameField" property="surname"/>
+                    <textField id="patronymicField" property="patronymic"/>
+                    <lookupField id="sexField" property="sex"/>
+                    <dateField id="dateOfBirthField" property="dateOfBirth"/>
+                    <textField id="cipherField" property="cipher"/>
+                    <textField id="citizenshipField" property="citizenship"/>
+                    <checkBox id="isHostelNeedField" property="isHostelNeed"/>
+                    <pickerField id="contactsField" property="contacts">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="sumOfPointsField" property="sumOfPoints"/>
+                    <textField id="documentCardPassportField" property="documentCard.passport"/>
+                    <textField id="documentCardPersonalInsurancePolicyNumField"
+                               property="documentCard.personalInsurancePolicyNum"/>
+                    <textField id="documentCardIndividualTaxpayerNumField"
+                               property="documentCard.individualTaxpayerNum"/>
+                </column>
+            </form>
+        </scrollBox>
+        <groupBox id="examResultsBox" caption="msg://com.company.selcommittee.entity/Student.examResults">
+            <table id="examResultsTable" dataContainer="examResultsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="pointsCount"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="examResultsTable.create"/>
+                    <button action="examResultsTable.edit"/>
+                    <button action="examResultsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="directionsOfStudyWithPriorityBox"
+                  caption="msg://com.company.selcommittee.entity/Student.directionsOfStudyWithPriority">
+            <table id="directionsOfStudyWithPriorityTable" dataContainer="directionsOfStudyWithPriorityDc" width="100%"
+                   height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="priority"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="directionsOfStudyWithPriorityTable.create"/>
+                    <button action="directionsOfStudyWithPriorityTable.edit"/>
+                    <button action="directionsOfStudyWithPriorityTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

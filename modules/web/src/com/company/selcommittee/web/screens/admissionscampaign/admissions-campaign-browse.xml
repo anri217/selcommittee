@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://admissionsCampaignBrowse.caption"
+        focusComponent="admissionsCampaignsTable"
+        messagesPack="com.company.selcommittee.web.screens.admissionscampaign">
+    <data readOnly="true">
+        <collection id="admissionsCampaignsDc"
+                    class="com.company.selcommittee.entity.AdmissionsCampaign">
+            <view extends="_local">
+                <property name="directionsOfStudy" view="_local"/>
+                <property name="students" view="_local"/>
+            </view>
+            <loader id="admissionsCampaignsDl">
+                <query>
+                    <![CDATA[select e from selcommittee_AdmissionsCampaign e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="admissionsCampaignsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="admissionsCampaignsTable"
+                dataLoader="admissionsCampaignsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="admissionsCampaignsTable"
+                    width="100%"
+                    dataContainer="admissionsCampaignsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="year"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="admissionsCampaignsTable.create"/>
+                <button id="editBtn" action="admissionsCampaignsTable.edit"/>
+                <button id="removeBtn" action="admissionsCampaignsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <item screen="selcommittee_AdmissionsCampaign.browse" id="admissionsCampaigns" caption="mainMsg://menu_config.admissionsCampaigns"
+          insertBefore="administration"/>
+    <item screen="selcommittee_Student.browse" id="student_browse" caption="mainMsg://menu_config.student_browse"
+          insertBefore="administration"/>
+    <item screen="selcommittee_Rating.browse" id="ratings" caption="mainMsg://menu_config.ratings"
+          insertBefore="administration"/>
+</menu-config>

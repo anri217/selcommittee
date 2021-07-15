@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="selcommittee" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.selcommittee.entity.Student</class>
+        <class>com.company.selcommittee.entity.DocumentCard</class>
+        <class>com.company.selcommittee.entity.Contacts</class>
+        <class>com.company.selcommittee.entity.Address</class>
+        <class>com.company.selcommittee.entity.ExamResults</class>
+        <class>com.company.selcommittee.entity.Discipline</class>
+        <class>com.company.selcommittee.entity.DirectionOfStudy</class>
+        <class>com.company.selcommittee.entity.AdmissionsCampaign</class>
+        <class>com.company.selcommittee.entity.Rating</class>
+        <class>com.company.selcommittee.entity.DirOfStudyWithPriority</class>
+    </persistence-unit>
+</persistence>

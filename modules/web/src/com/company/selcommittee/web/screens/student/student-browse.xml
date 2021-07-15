@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://studentBrowse.caption"
+        focusComponent="studentsTable"
+        messagesPack="com.company.selcommittee.web.screens.student">
+    <data readOnly="true">
+        <collection id="studentsDc"
+                    class="com.company.selcommittee.entity.Student" > 
+            <view   extends="_local"><property name="contacts" view="_minimal"><property name="mainCellPhone"/><property name="additionalCellPhone"/><property name="permanentRegistrationAddress" view="_minimal"><property name="country"/><property name="region"/><property name="locality"/><property name="street"/><property name="house"/><property name="building"/><property name="flat"/><property name="zipCode"/></property><property name="livingAddress" view="_minimal"><property name="country"/><property name="region"/><property name="locality"/><property name="street"/><property name="house"/><property name="building"/><property name="flat"/><property name="zipCode"/></property></property><property name="directionsOfStudyWithPriority" view="_minimal"><property name="directionOfStudy" view="_minimal"><property name="cipher"/><property name="numOfBudgetPlaces"/><property name="passingPoints"/></property><property name="priority"/></property><property name="sumOfPoints"/><property name="documentCard" view="_minimal"><property name="passport"/><property name="personalInsurancePolicyNum"/><property name="individualTaxpayerNum"/></property><property name="examResults" view="_minimal"><property name="discipline" view="_minimal"/><property name="pointsCount"/></property></view>
+            <loader id="studentsDl">
+                <query>
+                    <![CDATA[select e from selcommittee_Student e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="studentsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="studentsTable"
+                dataLoader="studentsDl">
+            <properties include=".*"/>
+        </filter>
+        
+<groupTable id="studentsTable"
+        width="100%"
+        dataContainer="studentsDc">
+    <actions>
+        <action id="create" type="create"/>
+    
+        <action id="edit" type="edit"/>
+    
+        <action id="remove" type="remove"/>
+    
+    </actions>
+    <columns>
+        <column  id="name"/>
+    
+        <column  id="surname"/>
+    
+        <column  id="patronymic"/>
+    
+        <column  id="sex"/>
+    
+        <column  id="dateOfBirth"/>
+    
+        <column  id="cipher"/>
+    
+        <column  id="citizenship"/>
+    
+        <column  id="isHostelNeed"/>
+    
+        <column  id="contacts"/>
+    
+        <column  id="sumOfPoints"/>
+    
+        <column  id="documentCard.passport"/>
+    
+        <column  id="documentCard.personalInsurancePolicyNum"/>
+    
+        <column  id="documentCard.individualTaxpayerNum"/>
+    
+    </columns>
+    <rowsCount/>
+    <buttonsPanel id="buttonsPanel"
+                  alwaysVisible="true">
+        
+            <button id="createBtn" action="studentsTable.create"/>                
+        
+            <button id="editBtn" action="studentsTable.edit"/>                
+        
+            <button id="removeBtn" action="studentsTable.remove"/>                
+        
+    </buttonsPanel>
+</groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>                
+</window>

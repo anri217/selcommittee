@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://ratingBrowse.caption"
+        focusComponent="ratingsTable"
+        messagesPack="com.company.selcommittee.web.screens.rating">
+    <data readOnly="true">
+        <collection id="ratingsDc"
+                    class="com.company.selcommittee.entity.Rating">
+            <view extends="_local">
+                <property name="directionOfStudy" view="_minimal">
+                    <property name="cipher"/>
+                    <property name="numOfBudgetPlaces"/>
+                    <property name="passingPoints"/>
+                </property>
+                <property name="students" view="_minimal">
+                    <property name="surname"/>
+                    <property name="patronymic"/>
+                    <property name="sex"/>
+                    <property name="dateOfBirth"/>
+                    <property name="citizenship"/>
+                    <property name="sumOfPoints"/>
+                </property>
+            </view>
+            <loader id="ratingsDl">
+                <query>
+                    <![CDATA[select e from selcommittee_Rating e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="studentsDc" class="com.company.selcommittee.entity.Student">
+            <view extends="_local"/>
+            <loader id="studentsDl">
+                <query>
+                    <![CDATA[select e from selcommittee_Student e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="groupBox"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ratingsTable"
+                dataLoader="ratingsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupBox id="groupBox" orientation="horizontal" spacing="true">
+            <groupTable id="ratingsTable"
+                        width="100%"
+                        dataContainer="ratingsDc">
+                <columns>
+                    <column id="directionOfStudy"/>
+                </columns>
+            </groupTable>
+            <groupTable id="studentsTable"
+                        width="100%"
+                        dataContainer="studentsDc">
+                <columns>
+                    <column id="name"/>
+                    <column id="surname"/>
+                    <column id="patronymic"/>
+                    <column id="sex"/>
+                    <column id="dateOfBirth"/>
+                    <column id="cipher"/>
+                    <column id="citizenship"/>
+                    <column id="isHostelNeed"/>
+                    <column id="sumOfPoints"/>
+                </columns>
+            </groupTable>
+        </groupBox>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

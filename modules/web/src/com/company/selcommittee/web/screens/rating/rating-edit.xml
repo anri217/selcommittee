@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://ratingEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.selcommittee.web.screens.rating">
+    <data>
+        <instance id="ratingDc"
+                  class="com.company.selcommittee.entity.Rating">
+            <view extends="_local">
+                <property name="directionOfStudy" view="_minimal">
+                    <property name="cipher"/>
+                    <property name="numOfBudgetPlaces"/>
+                    <property name="passingPoints"/>
+                </property>
+                <property name="students" view="_minimal">
+                    <property name="surname"/>
+                    <property name="patronymic"/>
+                    <property name="sex"/>
+                    <property name="dateOfBirth"/>
+                    <property name="citizenship"/>
+                    <property name="sumOfPoints"/>
+                </property>
+            </view>
+            <loader/>
+            <collection id="studentsDc" property="students"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="ratingDc">
+            <column width="350px">
+                <pickerField id="directionOfStudyField" property="directionOfStudy">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <groupBox id="studentsBox" caption="msg://com.company.selcommittee.entity/Rating.students">
+            <table id="studentsTable" dataContainer="studentsDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="surname"/>
+                    <column id="patronymic"/>
+                    <column id="sex"/>
+                    <column id="dateOfBirth"/>
+                    <column id="citizenship"/>
+                    <column id="sumOfPoints"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="studentsTable.add"/>
+                    <button action="studentsTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://examResultsBrowse.caption"
+        focusComponent="examResultsesTable"
+        messagesPack="com.company.selcommittee.web.screens.examresults">
+    <data readOnly="true">
+        <collection id="examResultsesDc"
+                    class="com.company.selcommittee.entity.ExamResults">
+            <view extends="_local">
+                <property name="discipline" view="_minimal"/>
+            </view>
+            <loader id="examResultsesDl">
+                <query>
+                    <![CDATA[select e from selcommittee_ExamResults e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="examResultsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="examResultsesTable"
+                dataLoader="examResultsesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="examResultsesTable"
+                    width="100%"
+                    dataContainer="examResultsesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="discipline"/>
+                <column id="pointsCount"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="examResultsesTable.create"/>
+                <button id="editBtn" action="examResultsesTable.edit"/>
+                <button id="removeBtn" action="examResultsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="selcommittee_Student" name="student-view" extends="_local">
+        <property name="directionsOfStudyWithPriority" view="_minimal">
+            <property name="directionOfStudy" view="_minimal">
+                <property name="cipher"/>
+                <property name="numOfBudgetPlaces"/>
+                <property name="passingPoints"/>
+            </property>
+            <property name="priority"/>
+        </property>
+    </view>
+    <view entity="selcommittee_Rating" name="rating-view" extends="_local">
+        <property name="directionOfStudy" view="_minimal"/>
+        <property name="students" view="_minimal"/>
+    </view>
+</views>

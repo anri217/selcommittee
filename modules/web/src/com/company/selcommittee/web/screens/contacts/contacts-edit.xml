@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://contactsEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.selcommittee.web.screens.contacts">
+    <data>
+        <instance id="contactsDc"
+                  class="com.company.selcommittee.entity.Contacts">
+            <view extends="_local">
+                <property name="permanentRegistrationAddress" view="_minimal">
+                    <property name="country"/>
+                    <property name="region"/>
+                    <property name="locality"/>
+                    <property name="street"/>
+                    <property name="house"/>
+                    <property name="building"/>
+                    <property name="flat"/>
+                    <property name="zipCode"/>
+                </property>
+                <property name="livingAddress" view="_minimal">
+                    <property name="country"/>
+                    <property name="region"/>
+                    <property name="locality"/>
+                    <property name="street"/>
+                    <property name="house"/>
+                    <property name="building"/>
+                    <property name="flat"/>
+                    <property name="zipCode"/>
+                </property>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="contactsDc">
+            <column width="350px">
+                <textField id="mainCellPhoneField" property="mainCellPhone"/>
+                <textField id="additionalCellPhoneField" property="additionalCellPhone"/>
+                <textField id="permanentRegistrationAddressCountryField"
+                           property="permanentRegistrationAddress.country"/>
+                <textField id="permanentRegistrationAddressRegionField" property="permanentRegistrationAddress.region"/>
+                <textField id="permanentRegistrationAddressLocalityField"
+                           property="permanentRegistrationAddress.locality"/>
+                <textField id="permanentRegistrationAddressStreetField" property="permanentRegistrationAddress.street"/>
+                <textField id="permanentRegistrationAddressHouseField" property="permanentRegistrationAddress.house"/>
+                <textField id="permanentRegistrationAddressBuildingField"
+                           property="permanentRegistrationAddress.building"/>
+                <textField id="permanentRegistrationAddressFlatField" property="permanentRegistrationAddress.flat"/>
+                <textField id="permanentRegistrationAddressZipCodeField"
+                           property="permanentRegistrationAddress.zipCode"/>
+                <textField id="livingAddressCountryField" property="livingAddress.country"/>
+                <textField id="livingAddressRegionField" property="livingAddress.region"/>
+                <textField id="livingAddressLocalityField" property="livingAddress.locality"/>
+                <textField id="livingAddressStreetField" property="livingAddress.street"/>
+                <textField id="livingAddressHouseField" property="livingAddress.house"/>
+                <textField id="livingAddressBuildingField" property="livingAddress.building"/>
+                <textField id="livingAddressFlatField" property="livingAddress.flat"/>
+                <textField id="livingAddressZipCodeField" property="livingAddress.zipCode"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
