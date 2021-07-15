@@ -1,5 +1,6 @@
 package com.company.selcommittee.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "SELCOMMITTEE_DIR_OF_STUDY_WITH_PRIORITY")
 @Entity(name = "selcommittee_DirOfStudyWithPriority")
+@NamePattern("%s|directionOfStudy")
 public class DirOfStudyWithPriority extends StandardEntity {
     private static final long serialVersionUID = -5183458087535679912L;
 
@@ -17,6 +19,7 @@ public class DirOfStudyWithPriority extends StandardEntity {
     @NotNull
     @Column(name = "PRIORITY", nullable = false)
     private String priority;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDENT_ID")
     private Student student;

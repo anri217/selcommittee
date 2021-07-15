@@ -1,6 +1,7 @@
 package com.company.selcommittee.entity;
 
 import com.haulmont.chile.core.annotations.MetaClass;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.EmbeddableEntity;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @MetaClass(name = "selcommittee_DocumentCard")
 @Embeddable
+@NamePattern("%s|passport")
 public class DocumentCard extends EmbeddableEntity {
     private static final long serialVersionUID = -7793422180853237102L;
 

@@ -1,5 +1,6 @@
 package com.company.selcommittee.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "SELCOMMITTEE_EXAM_RESULTS")
 @Entity(name = "selcommittee_ExamResults")
+@NamePattern("%s %s|discipline,pointsCount")
 public class ExamResults extends StandardEntity {
     private static final long serialVersionUID = 1438672080233239083L;
 

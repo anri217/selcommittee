@@ -9,6 +9,7 @@
                     class="com.company.selcommittee.entity.ExamResults">
             <view extends="_local">
                 <property name="discipline" view="_minimal"/>
+                <property name="student" view="_minimal"/>
             </view>
             <loader id="examResultsesDl">
                 <query>

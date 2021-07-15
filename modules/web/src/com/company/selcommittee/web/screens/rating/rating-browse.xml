@@ -19,6 +19,7 @@
                     <property name="dateOfBirth"/>
                     <property name="citizenship"/>
                     <property name="sumOfPoints"/>
+                    <property name="examResults" view="_local"/>
                 </property>
             </view>
             <loader id="ratingsDl">
@@ -28,7 +29,9 @@
             </loader>
         </collection>
         <collection id="studentsDc" class="com.company.selcommittee.entity.Student">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="examResults" view="_local"/>
+            </view>
             <loader id="studentsDl">
                 <query>
                     <![CDATA[select e from selcommittee_Student e]]>

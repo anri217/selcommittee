@@ -93,6 +93,7 @@
                 </actions>
                 <columns>
                     <column id="pointsCount"/>
+                    <column id="discipline"/>
                 </columns>
                 <buttonsPanel>
                     <button action="examResultsTable.create"/>
@@ -112,6 +113,7 @@
                 </actions>
                 <columns>
                     <column id="priority"/>
+                    <column id="directionOfStudy"/>
                 </columns>
                 <buttonsPanel>
                     <button action="directionsOfStudyWithPriorityTable.create"/>

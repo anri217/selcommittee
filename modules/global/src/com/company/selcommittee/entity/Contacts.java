@@ -1,6 +1,7 @@
 package com.company.selcommittee.entity;
 
 import com.haulmont.chile.core.annotations.MetaProperty;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "SELCOMMITTEE_CONTACTS")
 @Entity(name = "selcommittee_Contacts")
+@NamePattern("%s %s|mainCellPhone,livingAddress")
 public class Contacts extends StandardEntity {
     private static final long serialVersionUID = 6269271181403758903L;
 
@@ -33,12 +35,16 @@ public class Contacts extends StandardEntity {
             @AttributeOverride(name = "zipCode", column = @Column(name = "PERMANENT_REGISTRATION_ADDRESS_ZIP_CODE"))
     })
     private @Embedded
-    @NotNull @EmbeddedParameters(nullAllowed = false) Address permanentRegistrationAddress;
+    @NotNull
+    @EmbeddedParameters(nullAllowed = false)
+    Address permanentRegistrationAddress;
 
     @AttributeOverrides({@AttributeOverride(name = "country", column = @Column(name = "LIVING_ADDRESS_COUNTRY")), @AttributeOverride(name = "region", column = @Column(name = "LIVING_ADDRESS_REGION")), @AttributeOverride(name = "locality", column = @Column(name = "LIVING_ADDRESS_LOCALITY")), @AttributeOverride(name = "street", column = @Column(name = "LIVING_ADDRESS_STREET")), @AttributeOverride(name = "house", column = @Column(name = "LIVING_ADDRESS_HOUSE")), @AttributeOverride(name = "building", column = @Column(name = "LIVING_ADDRESS_BUILDING")), @AttributeOverride(name = "flat", column = @Column(name = "LIVING_ADDRESS_FLAT")), @AttributeOverride(name = "zipCode", column = @Column(name = "LIVING_ADDRESS_ZIP_CODE"))
     })
     private @Embedded
-    @NotNull @EmbeddedParameters(nullAllowed = false) Address livingAddress;
+    @NotNull
+    @EmbeddedParameters(nullAllowed = false)
+    Address livingAddress;
 
     public Student getStudent() {
         return student;

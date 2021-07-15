@@ -1,6 +1,7 @@
 package com.company.selcommittee.entity;
 
 import com.haulmont.chile.core.annotations.MetaClass;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.EmbeddableEntity;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @MetaClass(name = "selcommittee_Address")
 @Embeddable
+@NamePattern("%s %s|region,locality")
 public class Address extends EmbeddableEntity {
     private static final long serialVersionUID = -673841107208156588L;
 
