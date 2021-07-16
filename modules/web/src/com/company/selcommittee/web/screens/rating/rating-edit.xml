@@ -13,8 +13,10 @@
                     <property name="passingPoints"/>
                 </property>
                 <property name="students" view="_minimal">
+                    <property name="cipher"/>
                     <property name="surname"/>
                     <property name="patronymic"/>
+                    <property name="isHostelNeed"/>
                     <property name="sex"/>
                     <property name="dateOfBirth"/>
                     <property name="citizenship"/>

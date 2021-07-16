@@ -9,7 +9,9 @@
                     class="com.company.selcommittee.entity.AdmissionsCampaign">
             <view extends="_local">
                 <property name="directionsOfStudy" view="_local"/>
-                <property name="students" view="_local"/>
+                <property name="students" view="_local">
+                    <property name="examResults" view="_local"/>
+                </property>
             </view>
             <loader id="admissionsCampaignsDl">
                 <query>
