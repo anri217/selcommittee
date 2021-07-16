@@ -1,5 +1,6 @@
 package com.company.selcommittee.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
@@ -26,6 +27,7 @@ public class ExamResults extends StandardEntity {
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "STUDENT_ID")
     @ManyToOne(fetch = FetchType.LAZY)
+    @Composition
     private Student student;
 
     public Student getStudent() {

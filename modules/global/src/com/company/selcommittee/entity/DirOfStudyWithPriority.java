@@ -1,5 +1,6 @@
 package com.company.selcommittee.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
@@ -22,6 +23,7 @@ public class DirOfStudyWithPriority extends StandardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDENT_ID")
+    @Composition
     private Student student;
 
     public Student getStudent() {

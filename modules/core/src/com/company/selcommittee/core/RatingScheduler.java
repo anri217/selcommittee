@@ -47,8 +47,8 @@ public class RatingScheduler implements RatingSchedulerService {
                     Rating rating = findOrCreate(dirOfStudyWithPriority.getDirectionOfStudy());
                     if (!containsStudent(rating, student)) {
                         rating.getStudents().add(student);
+                        commitContext.addInstanceToCommit(rating);
                     }
-                    commitContext.addInstanceToCommit(rating);
                 }
             }
 
