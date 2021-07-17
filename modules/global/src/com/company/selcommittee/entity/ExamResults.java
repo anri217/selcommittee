@@ -27,7 +27,6 @@ public class ExamResults extends StandardEntity {
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "STUDENT_ID")
     @ManyToOne(fetch = FetchType.LAZY)
-    @Composition
     private Student student;
 
     public Student getStudent() {

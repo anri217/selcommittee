@@ -23,7 +23,6 @@ public class DirOfStudyWithPriority extends StandardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "STUDENT_ID")
-    @Composition
     private Student student;
 
     public Student getStudent() {

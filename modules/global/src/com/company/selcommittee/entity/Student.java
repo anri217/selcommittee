@@ -1,5 +1,6 @@
 package com.company.selcommittee.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
@@ -57,6 +58,7 @@ public class Student extends StandardEntity {
     private Contacts contacts;
 
     @OneToMany(mappedBy = "student")
+    @Composition
     private List<DirOfStudyWithPriority> directionsOfStudyWithPriority;
 
     @Embedded
@@ -70,6 +72,7 @@ public class Student extends StandardEntity {
 
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "student")
+    @Composition
     private List<ExamResults> examResults = new ArrayList<>();
 
     @MetaProperty(related = "examResults")
